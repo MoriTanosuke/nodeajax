@@ -7,6 +7,6 @@ ul
 
 p Here you can see a text input with auto-complete.
 form
-  input(type="text", placeholder="Search", onkeyup="search(this.value)")
-  ul
-    li Nothing found
+  input(type="text", placeholder="Search", id="autocomplete", onkeyup="search(this.value)")
+  br
+  div(id="result")

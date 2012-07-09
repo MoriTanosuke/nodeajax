@@ -15,10 +15,6 @@ app.get('/countries', function(req, res){
 app.get('/countries/:searchterm', function(req, res){
   res.send(countries.filter(function(element, index, array) {return element.match(new RegExp(req.params.searchterm, 'g'));}));
 });
-/* HTML resources */
-app.get('/func.js', function(req, res){
-  res.sendfile('views/func.js');
-});
 
 app.listen(3000);
 

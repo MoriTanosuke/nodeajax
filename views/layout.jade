@@ -3,6 +3,28 @@ html(lang="en")
   head
     title= pageTitle
     script(type="text/javascript", href="http://code.jquery.com/jquery.min.js")
-    script(type="text/javascript", href="func.js")
+    script(type="text/javascript")
+      function list(elements) {
+        var r = '<ul>';
+        for(i in elements) {
+          r += '<li>' + elements[i] + '</li>';
+        }
+        r += '</ul>';
+        return r;
+      }
+      function search(needle) {
+        console.log('Searching for ' + needle);
+        if(needle == '') {
+          document.getElementById('result').innerHTML = list([]);
+          return;
+        }
+        var http = new XMLHttpRequest();
+        http.open("GET", "/countries/" + needle, true)
+        http.onreadystatechange = function() {
+          document.getElementById('result').innerHTML = list(JSON.parse(http.responseText));
+        }
+        http.send(null);
+      }
+
 body!= body
 
