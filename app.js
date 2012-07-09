@@ -1,10 +1,13 @@
 var app = require('express').createServer();
 
+/* configuration */
+app.set('view engine', 'jade');
+
+
 var countries = ['Germany', 'France', 'Great Britain', 'Poland'];
 
 app.get('/', function(req, res){
-  res.send('<ul><li><a href="/countries">/countries</a></li>\n' +
-    '<li><a href="/countries/gre">/countries/[SEARCHTERM]</a></li></ul>');
+  res.render('index', {'pageTitle': 'Country Service'});
 });
 app.get('/countries', function(req, res){
   res.send(countries);
